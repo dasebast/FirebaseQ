@@ -1,21 +1,21 @@
 var app = angular.module('parseQ');
 
-app.service('parseService', function($http){
+app.service('parseService', function($http, $q){
+	this.getQuestions = function() {
+		var deferred = $q.defer();
+		$http ({
+			method: 'GET',
+			url: 'https://api.parse.com/1/classes/question'
+		})
+			.then(function(data){
+				return deferred.resolve(data)
+			})
+		return deferred.promise
+	}
 	this.postQuestion = function(question){
-		// var deferred = $q.defer();
 		return $http({
 			method: 'POST',
 			data: question,
-			url: 'https://api.parse.com/1/classes/question'
-		})
-		// 	.then(function(data){
-		// 		return deferred.resolve(data);
-		// 	})
-		// return deferred.promise;
-	}
-	this.getQuestions = function() {
-		return $http ({
-			method: 'GET',
 			url: 'https://api.parse.com/1/classes/question'
 		})
 	}

@@ -1,0 +1,29 @@
+html, body {
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.top-bar {
+	margin: 0px;
+	width: 100%;
+	box-shadow: 0px 0px 4px .5px black;
+	padding: 15px 0px 7px 0px;
+}
+.ask-question {
+	width: 220px;
+	margin: 0px auto;
+}
+.flex-box {
+	padding: 15px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+button {
+	background: #AFAFB5;
+	border-radius: 3px;
+	border: none;
+	box-shadow: .5px .5px 2px .2px black;
+	margin: 4px;
+}

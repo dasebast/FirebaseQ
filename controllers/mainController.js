@@ -1,6 +1,12 @@
 var app = angular.module('parseQ');
 
 app.controller('mainCtrl', function($scope, parseService){
+	$scope.getData = function() {
+		parseService.getQuestions()
+			.then(function(data){
+				$scope.questions = data.data.results;
+			})
+	}
 	$scope.postData = function(){
 		var obj = {}
 		obj.question = $scope.question;
@@ -15,15 +21,7 @@ app.controller('mainCtrl', function($scope, parseService){
 				$scope.getData();
 			})
 	}
-	$scope.getData = function() {
-		parseService.getQuestions()
-			.then(function(data){
-				$scope.questions = data.data.results;
-				console.log($scope.questions);
-			})
-	}
 	$scope.updateData = function(data) {
-		console.log(data)
 		data.color = 'yellow'
 		parseService.updateQuestion(data)
 			.success(function(){
@@ -34,7 +32,6 @@ app.controller('mainCtrl', function($scope, parseService){
 			})
 	}
 	$scope.deleteData = function(data) {
-		console.log(data)
 		parseService.deleteQuestion(data)
 			.success(function(){
 				$scope.getData();
