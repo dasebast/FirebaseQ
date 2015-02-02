@@ -12,22 +12,13 @@ app.controller('mainCtrl', function($scope, firebaseService){
 		$scope.questions.$add(obj);
 		$scope.question = '';
 	}
-	$scope.updateData = function(obj) {
-		for(var i = 0; i < $scope.questions.length; i++){
-			if($scope.questions[i].$id === obj.$id){
-				$scope.questions[i].color = 'yellow';
-				$scope.questions.$save(obj);
-				return;				
-			}
-		}
+	$scope.updateData = function(question) {
+		question.color = 'yellow';
+		$scope.questions.$save(question);
 	}
-	$scope.deleteData = function(obj) {
-		for(var i = 0; i < $scope.questions.length; i++){
-			if($scope.questions[i].$id === obj.$id){
-				$scope.questions.$remove(i);
-				return;				
-			}
-		}
+	$scope.deleteData = function(item) {
+		$scope.questions.$remove(item);
+		return;
 	}
 
 	$scope.getData();

@@ -1,8 +1,8 @@
 var app = angular.module('parseQ');
 
-app.service('firebaseService', function($http, $q, $firebase, constants){
+app.service('firebaseService', function($http, $q, $firebase, fbConstant){
 
-	var fbUrl = constants.firebaseUrl;
+	var fbUrl = fbConstant.firebaseUrl;
 	
 	this.getQuestions = function() {
 		return $firebase(new Firebase(fbUrl + '/q'))
