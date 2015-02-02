@@ -1,6 +1,6 @@
 var app = angular.module('parseQ');
 
-app.service('parseService', function($http, $q){
+app.service('firebaseService', function($http, $q){
 	this.getQuestions = function() {
 		var deferred = $q.defer();
 		$http ({

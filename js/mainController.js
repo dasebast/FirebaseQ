@@ -1,8 +1,8 @@
 var app = angular.module('parseQ');
 
-app.controller('mainCtrl', function($scope, parseService){
+app.controller('mainCtrl', function($scope, firebaseService){
 	$scope.getData = function() {
-		parseService.getQuestions()
+		firebaseService.getQuestions()
 			.then(function(data){
 				$scope.questions = data.data.results;
 			})
@@ -11,7 +11,7 @@ app.controller('mainCtrl', function($scope, parseService){
 		var obj = {}
 		obj.question = $scope.question;
 		obj.color = 'red';
-		parseService.postQuestion(obj)
+		firebaseService.postQuestion(obj)
 			.success(function(){
 				$scope.getData();
 				$scope.question = '';
@@ -23,7 +23,7 @@ app.controller('mainCtrl', function($scope, parseService){
 	}
 	$scope.updateData = function(data) {
 		data.color = 'yellow'
-		parseService.updateQuestion(data)
+		firebaseService.updateQuestion(data)
 			.success(function(){
 				$scope.getData();
 			})
@@ -32,7 +32,7 @@ app.controller('mainCtrl', function($scope, parseService){
 			})
 	}
 	$scope.deleteData = function(data) {
-		parseService.deleteQuestion(data)
+		firebaseService.deleteQuestion(data)
 			.success(function(){
 				$scope.getData();
 			})
